@@ -12,9 +12,8 @@ import Stack from '@mui/material/Stack';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
-//objetos del carrito de compras
-//let productsList = [];
-
+//falta hacer la interacion de enviar el producto al carrito y verlo
+//tambien hay que ver si de alguna manera se modifica el carrito del logo para el contador
 
 export default function AddProductToCar({open, handleClose, product}) {
   const [inputCant, setInputCant] = useState({text: 'outlined-basic', label : 'Cant', error : false, textError :''});

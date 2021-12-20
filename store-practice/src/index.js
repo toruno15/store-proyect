@@ -5,7 +5,6 @@ import reportWebVitals from './reportWebVitals';
 //imports del react router
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //imports de los componentes
-import App from './App';
 import Home from './components/layouts/home';
 import CarShopList from './components/carShop/carList';
 import SeeProduct from './components/products/seeProduct';
@@ -18,7 +17,6 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={ <Main /> }>
             <Route index element={ <Home/> } />
-            <Route path="main" element={ <App/> } />
             <Route path="list-Products" element={ <ListProducts /> } />
             <Route path="carShop-List" element={ <CarShopList/> } />
             <Route path="watchProduct" element={ <SeeProduct/> } />

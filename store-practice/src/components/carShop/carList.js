@@ -15,6 +15,9 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import { IconButton } from '@mui/material';
 //imports of styles
 import './styles/carList.css';
+//imports of componnets
+import BuyProduct from './BuyProduct';
+import DeleteToCar from './deleteProductToCar';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -49,6 +52,27 @@ const rows = [
 ];
 
 export default function CarShopList() {
+  //states
+  const [openBuy, setOpenBuy] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
+
+  //funstions of states
+  const handleOpenBuy = () => {
+    setOpenBuy(true);
+  };
+
+  const handleCloseBuy = () => {
+    setOpenBuy(false);
+  };
+
+  const handleOpenDelete = () => {
+    setOpenDelete(true);
+  };
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
+  };
+
   return (
     <React.Fragment>
       <Box
@@ -94,12 +118,14 @@ export default function CarShopList() {
                   <StyledTableCell align="center">{row.carbs}</StyledTableCell>
                   <StyledTableCell align="center">${(row.protein * row.carbs).toFixed(2)}</StyledTableCell>
                   <StyledTableCell align="center">
-                    <IconButton size="large" aria-label="BuyCar" color="error">
+                    <DeleteToCar open={openDelete} handleClose={handleCloseDelete} />
+                    <IconButton onClick={handleOpenDelete} size="large" aria-label="BuyCar" color="error">
                       <RemoveShoppingCartIcon />
                     </IconButton>
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <IconButton size="large" aria-label="BuyCar" color="success">
+                    <BuyProduct open={openBuy} handleClose={handleCloseBuy} object={row} />
+                    <IconButton onClick={handleOpenBuy} size="large" aria-label="BuyCar" color="success">
                       <MonetizationOnIcon />
                     </IconButton>
                   </StyledTableCell>

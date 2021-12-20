@@ -38,8 +38,8 @@ export default function CarProduct({product}) {
       <CardActions>
         <IconButton size="large" aria-label="BuyCar" color="secondary">
               <VisibilityIcon />
-              <AddProductToCar open={open} handleClose={handleClose} product={product}/>
         </IconButton>
+        <AddProductToCar open={open} handleClose={handleClose} product={product}/>
         <IconButton onClick={handleOpen} size="large" aria-label="BuyCar" color="success">
           <AddShoppingCartIcon />
         </IconButton>
