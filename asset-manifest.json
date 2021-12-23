@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/store-proyect/static/css/main.6475a2ee.chunk.css",
-    "main.js": "/store-proyect/static/js/main.ca05d7e4.chunk.js",
-    "main.js.map": "/store-proyect/static/js/main.ca05d7e4.chunk.js.map",
-    "runtime-main.js": "/store-proyect/static/js/runtime-main.f70afe86.js",
-    "runtime-main.js.map": "/store-proyect/static/js/runtime-main.f70afe86.js.map",
-    "static/js/2.84af0b21.chunk.js": "/store-proyect/static/js/2.84af0b21.chunk.js",
-    "static/js/2.84af0b21.chunk.js.map": "/store-proyect/static/js/2.84af0b21.chunk.js.map",
-    "static/js/3.8ca10fc8.chunk.js": "/store-proyect/static/js/3.8ca10fc8.chunk.js",
-    "static/js/3.8ca10fc8.chunk.js.map": "/store-proyect/static/js/3.8ca10fc8.chunk.js.map",
-    "index.html": "/store-proyect/index.html",
-    "static/css/main.6475a2ee.chunk.css.map": "/store-proyect/static/css/main.6475a2ee.chunk.css.map",
-    "static/js/2.84af0b21.chunk.js.LICENSE.txt": "/store-proyect/static/js/2.84af0b21.chunk.js.LICENSE.txt"
+    "main.css": "/store-proyect/store-practice/static/css/main.6475a2ee.chunk.css",
+    "main.js": "/store-proyect/store-practice/static/js/main.ca05d7e4.chunk.js",
+    "main.js.map": "/store-proyect/store-practice/static/js/main.ca05d7e4.chunk.js.map",
+    "runtime-main.js": "/store-proyect/store-practice/static/js/runtime-main.3ad69ca1.js",
+    "runtime-main.js.map": "/store-proyect/store-practice/static/js/runtime-main.3ad69ca1.js.map",
+    "static/js/2.84af0b21.chunk.js": "/store-proyect/store-practice/static/js/2.84af0b21.chunk.js",
+    "static/js/2.84af0b21.chunk.js.map": "/store-proyect/store-practice/static/js/2.84af0b21.chunk.js.map",
+    "static/js/3.8ca10fc8.chunk.js": "/store-proyect/store-practice/static/js/3.8ca10fc8.chunk.js",
+    "static/js/3.8ca10fc8.chunk.js.map": "/store-proyect/store-practice/static/js/3.8ca10fc8.chunk.js.map",
+    "index.html": "/store-proyect/store-practice/index.html",
+    "static/css/main.6475a2ee.chunk.css.map": "/store-proyect/store-practice/static/css/main.6475a2ee.chunk.css.map",
+    "static/js/2.84af0b21.chunk.js.LICENSE.txt": "/store-proyect/store-practice/static/js/2.84af0b21.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f70afe86.js",
+    "static/js/runtime-main.3ad69ca1.js",
     "static/js/2.84af0b21.chunk.js",
     "static/css/main.6475a2ee.chunk.css",
     "static/js/main.ca05d7e4.chunk.js"
