@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 //import incons
@@ -34,16 +33,13 @@ export default function BuyProduct( {open, handleClose, object} ){
         aria-describedby="parent-modal-price"
       >
         <Card sx={{...style, maxWidth: 800}}>
-          <CardMedia
-            component="img"
-            height="140"
-            image='https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg'
-            alt="green iguana"
-          />
           <CardContent>
-            <h2 id="parent-modal-title">{object.name}</h2>
+            <p>¿Esta completamente de acuerdo en comprar este o estos producto?</p>
+            <p>
+              Cant: <b>{object.calories}</b>
+            </p> 
             <p id="parent-modal-price">
-              price: ${object.protein}
+              Price: <b>${object.protein}</b>
             </p>
           </CardContent>
           <CardActions>
@@ -51,7 +47,7 @@ export default function BuyProduct( {open, handleClose, object} ){
               <Box
                 component="form"
                 sx={{
-                  '& > :not(style)': { m: 1, width: '25ch' },
+                  '& > :not(style)': {width: '25ch' },
                 }}
                 noValidate
                 autoComplete="off"

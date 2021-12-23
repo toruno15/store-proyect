@@ -84,7 +84,7 @@ export default function CarShopList() {
           bgcolor: 'background.paper',
         }}
       >
-        <h1>Tabla de Porductos</h1>
+        <h1>TABLA DE PRODUCTOS</h1>
       </Box>
       <Box
         sx={{
@@ -112,7 +112,7 @@ export default function CarShopList() {
               {rows.map((row) => (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell component="th" scope="row" align="center">
-                    <img src='https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' class='image-carList'/>
+                    <img src='https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' alt='imagen del producto' class='image-carList'/>
                   </StyledTableCell>
                   <StyledTableCell align="center">{row.name}</StyledTableCell>
                   <StyledTableCell align="center">{row.carbs}</StyledTableCell>

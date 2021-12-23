@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 //import incons

@@ -1,11 +1,4 @@
 .image-carList{
-    max-width: 200px;
-    max-height: 200px;
-}
-
-@media screen {
-    .image-carList{
-        max-width: auto;
-        max-height: auto;
-    }   
+    max-width: 135px;
+    max-height: 135px;
 }

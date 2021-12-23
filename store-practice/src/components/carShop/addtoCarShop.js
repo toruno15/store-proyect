@@ -19,7 +19,7 @@ export default function AddProductToCar({open, handleClose, product}) {
   const [inputCant, setInputCant] = useState({text: 'outlined-basic', label : 'Cant', error : false, textError :''});
 
   const changeInput = (e) => {
-     if((new RegExp('[1-9][0-9]?')).test(e.target.value)){
+     if((new RegExp('^[1-9][0-9]?$')).test(e.target.value)){
       setInputCant({
         text: 'outlined-basic',
         label: 'Cant',
@@ -41,9 +41,9 @@ export default function AddProductToCar({open, handleClose, product}) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '3px solid #000',
     boxShadow: 24,
     pt: 2,
     px: 4,
