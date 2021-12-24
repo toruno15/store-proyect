@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
 import ListImages from './images';
@@ -8,47 +8,33 @@ import ListCategories from '../categories/listCategories';
 import AllCards from '../layouts/allCards';
 import ListProducts from '../products/listProducts';
 import AllCardsCategoriesHome from '../categories/allCardcategoriesHome';
+//import from API's
+import { getCategories } from '../../services/categoriesService';
+import { getProducts } from '../../services/productsService';
 
-
-//objetos de ejemplo
-let productsObjects = [
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00}
-];
-
-let categoriesObjects = [
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'},
-  {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg', name: 'nombre categoria', description: 'una descripcioncita de la categoria'}
-];
-
-
-//hayq ue arreglar el responsive de los Boxes
 export default function Home(){
+  const [products, setProduts] = React.useState([]);
+  const [categories, setCategories] = React.useState([]);
+
+  useEffect(()=>{
+    getAllProducts();
+    getAllCategories();
+  }, []);
+
+  const getAllProducts = () => {
+    getProducts()
+    .then( (newProducts) => {
+      setProduts(newProducts);
+    })
+  };
+
+  const getAllCategories = () => {
+    getCategories()
+    .then( (newCat) => {
+      setCategories(newCat);
+    });
+  };
+
   return(
     <React.Fragment>
       <Box
@@ -81,7 +67,7 @@ export default function Home(){
             Categories
           </Typography>
           <ListCategories>
-            <AllCardsCategoriesHome objects={categoriesObjects}/>
+            <AllCardsCategoriesHome objects={categories} />
           </ListCategories>
         </Box>
         <Divider/>
@@ -98,7 +84,7 @@ export default function Home(){
             Products
           </Typography>
           <ListProducts>
-            <AllCards objects={ productsObjects }/>
+            <AllCards objects={ products }/>
           </ListProducts>
         </Box>
       </Box>

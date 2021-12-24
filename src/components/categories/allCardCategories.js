@@ -1,12 +1,14 @@
-/*import CardCatedory from "./cardCategory";
+import React from 'react';
+import Box from '@mui/material/Box';
+import CardCategory from "./cardCategory";
 import '../../styles/card.css';
 
-export default function AllCardsCategoriesHome( {objects} ) {
-    const lista = objects.map((objeto, index) => {
-        <div key={index} class="card">
-            <CardCatedory product={objeto}/>
+export default function AllCardsCategories( {objects} ) {
+    const lista = objects.map((objeto) =>
+        <div key={objeto.id} class="card">
+            <CardCategory category={objeto}/>
         </div>
-    });
+    );
     return(
         <React.Fragment>
             <Box
@@ -14,11 +16,10 @@ export default function AllCardsCategoriesHome( {objects} ) {
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
-                bgcolor: 'background.paper',
                 }}
             > 
                 {lista}
             </Box>
         </React.Fragment>
     );
-}*/
+}

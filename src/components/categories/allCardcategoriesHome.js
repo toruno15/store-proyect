@@ -4,8 +4,8 @@ import CardCategory from "./cardCategory";
 import '../../styles/card.css';
 
 export default function AllCardsCategoriesHome( {objects} ) {
-    const lista = objects.slice(0, 4).map((objeto, index) =>
-        <div key={index} class="card">
+    const lista = objects.slice(0, 4).map((objeto) =>
+        <div key={objeto.id} class="card">
             <CardCategory category={objeto}/>
         </div>
     );
@@ -15,7 +15,7 @@ export default function AllCardsCategoriesHome( {objects} ) {
                 sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: 'space-around',
+                justifyContent: 'center',
                 }}
             > 
                 {lista}

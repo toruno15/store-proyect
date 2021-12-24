@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import '../../styles/card.css';
 
 export default function AllCards({ objects }){
-    const lista = objects.slice(0, 4).map((objeto, index)=>
-        <div key={index} class="card">
+    const lista = objects.slice(0, 4).map((objeto)=>
+        <div key={objeto.id} class="card">
             <CarProduct product={objeto}/>
         </div>
     );
