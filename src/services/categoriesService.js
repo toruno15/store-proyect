@@ -1,4 +1,4 @@
-const apiurl_Categories = 'http://localhost:53000/categories';
+const apiurl_Categories = 'http://localhost:5300/categories';
 
 export const getCategories = async () => {
     try{

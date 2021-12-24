@@ -81,7 +81,7 @@ export default function AddProductToCar({open, handleClose, product}) {
                 noValidate
                 autoComplete="off"
               >
-                <TextField onChange={changeInput} error={inputCant.error} id={inputCant.text} label={inputCant.label} variant="outlined" helperText={inputCant.textError}/>
+                <TextField type="number" onChange={changeInput} error={inputCant.error} id={inputCant.text} label={inputCant.label} variant="outlined" helperText={inputCant.textError}/>
                 <Stack spacing={3} direction="row">
                   <Button onClick={handleClose} color="secondary" variant="outlined" endIcon={<CancelIcon />}>
                     Cancel

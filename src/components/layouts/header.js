@@ -26,9 +26,6 @@ import { Link } from 'react-router-dom';
 //import of css
 import '../products/stylesProducts/navBar.css';
 
-  //para actualizar el estado del icono de compras
-  /*const [addNew, setAddNew] = React.useState(//algun onjeto o contador que vaya cambiando conforme al valor del los otros componentes);*/
-
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -79,6 +76,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function NavBar( { children } ) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+   //para actualizar el estado del icono de compras
+  /*const [addNew, setAddNew] = React.useState(//algun onjeto o contador que vaya cambiando conforme al valor del los otros componentes);*/
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -108,7 +107,7 @@ export default function NavBar( { children } ) {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Store
           </Typography>
-          <Link className="link" to="/list-products">
+          <Link className="link" to="/login">
                 <IconButton
                   size="large"
                   aria-label="account of current user"

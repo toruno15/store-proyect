@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Rating from '@mui/material/Rating';
 //icons
 import IconButton from '@mui/material/IconButton';
 import  AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -23,13 +24,14 @@ export default function CarProduct({product}) {
     setOpen(false);
   };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{maxWidth: 345,}}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
           image={product.image}
           alt="green iguana"
+          sx={{minWidth: 250}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -39,6 +41,11 @@ export default function CarProduct({product}) {
               {'$' + product.price}
           </Typography>
         </CardContent>
+        <Rating sx={{ml: 2,}}
+          name="generalOpinion"
+          value={product.ranking}
+          readOnly
+        />
         <CardActions>
           <Link to='/see-product'>
             <IconButton size="large" aria-label="BuyCar" color="secondary">

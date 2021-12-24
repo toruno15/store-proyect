@@ -14,6 +14,7 @@ export default function CardCategory( {category} ){
                     height="140"
                     image={category.image}
                     alt="green iguana"
+                    sx={{minWidth: 200}}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

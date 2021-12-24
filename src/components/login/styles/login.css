@@ -1,0 +1,11 @@
+.imageLogin{
+    max-width: 200px;
+    max-width: 200px;
+    border-radius: 100%;
+    border: solid rgb(136, 136, 136) 1px;
+    box-shadow: 6px 6px 9px rgb(28, 111, 114);
+}
+
+.link{
+    text-decoration: none;
+}

@@ -60,7 +60,9 @@ export default function Home(){
           flexDirection: 'column',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          mt: 3,
+          mb: 3,
           }}
         >
           <Typography gutterBottom variant="h5" component="div">
@@ -77,7 +79,9 @@ export default function Home(){
             flexDirection: 'column',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            mt: 3,
+            mb: 3,
             }}
         >
           <Typography gutterBottom variant="h5" component="div">
