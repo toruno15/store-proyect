@@ -11,12 +11,30 @@ import Stack from '@mui/material/Stack';
 //import incons
 import CancelIcon from '@mui/icons-material/Cancel';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+//imports of formik
+import {
+    Formik,
+    Form
+} from 'formik';
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  maxWidth: 400,
+  bgcolor: 'background.paper',
+  border: '3px solid #000',
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
 //falta hacer la interacion de enviar el producto al carrito y verlo
 //tambien hay que ver si de alguna manera se modifica el carrito del logo para el contador
 
 export default function AddProductToCar({open, handleClose, product}) {
-  const [inputCant, setInputCant] = useState({text: 'outlined-basic', label : 'Cant', error : false, textError :''});
+  const [inputCant, setInputCant] = useState({text: 'outlined-basic', label : 'Cant', value: '', error : false, textError :''});
 
   const changeInput = (e) => {
      if((new RegExp('^[1-9][0-9]?$')).test(e.target.value)){
@@ -24,32 +42,26 @@ export default function AddProductToCar({open, handleClose, product}) {
         text: 'outlined-basic',
         label: 'Cant',
         error: false,
-        textError: ''
+        textError: '',
+        value: e.target.value
       });
     }else{
       setInputCant({
         text: 'outlined-error-helper-text',
         label: 'Error',
         error: true,
-        textError: 'ERROR!. Digite un número mayor a cero.'
+        textError: 'ERROR!. Digite un número mayor a cero.',
+        value: e.target.value
       });
     }
   }
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: 400,
-    bgcolor: 'background.paper',
-    border: '3px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
+//falta terminar este metodo solo es de hacer la api y mandar el objeto ahi
+  /*
+  const handleSubmit = ()=>{
 
+  };
+  */
   return (
     <React.Fragment>
       <Modal
@@ -72,26 +84,24 @@ export default function AddProductToCar({open, handleClose, product}) {
             </p>
           </CardContent>
           <CardActions>
-            <form>
-              <Box
-                component="form"
-                sx={{
-                  '& > :not(style)': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField type="number" onChange={changeInput} error={inputCant.error} id={inputCant.text} label={inputCant.label} variant="outlined" helperText={inputCant.textError}/>
-                <Stack spacing={3} direction="row">
-                  <Button onClick={handleClose} color="secondary" variant="outlined" endIcon={<CancelIcon />}>
-                    Cancel
-                  </Button>
-                  <Button color="success" variant="contained" endIcon={<ShoppingCartCheckoutIcon />}>
-                    Send
-                  </Button>
-                </Stack>
-              </Box>
-            </form>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField type="number" name="cant" onChange={changeInput} value={inputCant.value} error={inputCant.error} id={inputCant.text} label={inputCant.label} variant="outlined" helperText={inputCant.textError}/>
+              <Stack spacing={3} direction="row">
+                <Button onClick={handleClose} color="secondary" variant="outlined" endIcon={<CancelIcon />}>
+                  Cancel
+                </Button>
+                <Button color="success" variant="contained" endIcon={<ShoppingCartCheckoutIcon />}>
+                  Send
+                </Button>
+              </Stack>
+            </Box>
           </CardActions>
         </Card>
       </Modal>

@@ -8,14 +8,19 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 //import from react-router
 import { Link } from 'react-router-dom';
+//imports of formik
+import {
+    Formik,
+    Form
+} from 'formik';
 
 export default function Register(){
     //states
-    const [inputName, setName] = useState({text: 'outlined-basic', label : 'Name', error : false, textError :''});
-    const [inputLName, setLastname] = useState({text: 'outlined-basic', label : 'Last Name', error : false, textError :''});
-    const [inputAge, setAge] = useState({text: 'outlined-basic', label : 'Age', error : false, textError :''});
-    const [inputMail, setMail] = useState({text: 'outlined-basic', label : 'Mail', error : false, textError :''});
-    const [inputPassword, setPassword] = useState({text: 'outlined-basic', label : 'Password', error : false, textError :''});
+    const [inputName, setName] = useState({text: 'outlined-basic', label : 'Name', value: '', error : false, textError :''});
+    const [inputLName, setLastname] = useState({text: 'outlined-basic', label : 'Last Name', value: '', error : false, textError :''});
+    const [inputAge, setAge] = useState({text: 'outlined-basic', label : 'Age', value: '', error : false, textError :''});
+    const [inputMail, setMail] = useState({text: 'outlined-basic', label : 'E-Mail', value: '', error : false, textError :''});
+    const [inputPassword, setPassword] = useState({text: 'outlined-basic', label : 'Password',  value: '', error : false, textError :''});
 
     //funciones que validan los cambios de los inputs
     const changeName = (e) =>{
@@ -24,7 +29,8 @@ export default function Register(){
                 text: 'outlined-basic',
                 label: 'Name',
                 error: false,
-                textError: ''
+                textError: '',
+                value: e.target.value
             });
             return true;
         }else{
@@ -32,7 +38,8 @@ export default function Register(){
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
-                textError: 'Por favor Digite un nombre valido.'
+                textError: 'Por favor Digite un nombre valido.',
+                value: e.target.value
             });
             return false;
         }
@@ -44,7 +51,8 @@ export default function Register(){
                 text: 'outlined-basic',
                 label: 'Last Name',
                 error: false,
-                textError: ''
+                textError: '',
+                value: e.target.value
             });
             return true;
         }else{
@@ -52,7 +60,8 @@ export default function Register(){
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
-                textError: 'Por favor Digite un apellido valido.'
+                textError: 'Por favor Digite un apellido valido.',
+                value: e.target.value
             });
             return false;
         }
@@ -64,7 +73,8 @@ export default function Register(){
                 text: 'outlined-basic',
                 label: 'Age',
                 error: false,
-                textError: ''
+                textError: '',
+                value: e.target.value
             });
             return true;
         }else{
@@ -72,7 +82,8 @@ export default function Register(){
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
-                textError: 'Digite una edad validad por favor.'
+                textError: 'Digite una edad validad por favor.',
+                value: e.target.value
             });
             return false;
         }
@@ -82,16 +93,18 @@ export default function Register(){
         if((new RegExp('^\\w+@((gmail)|(yahoo)|(hotmail))\\.com$')).test(e.target.value)){
             setMail({
                 text: 'outlined-basic',
-                label: 'Mail',
+                label: 'E-Mail',
                 error: false,
-                textError: ''
+                textError: '',
+                value: e.target.value
             });
         }else{
             setMail({
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
-                textError: 'Por favor Digite un correo electronico valido.'
+                textError: 'Por favor Digite un correo electronico valido.',
+                value: e.target.value
             });
         }
     };
@@ -102,34 +115,36 @@ export default function Register(){
                 text: 'outlined-basic',
                 label: 'Password',
                 error: false,
-                textError: ''
+                textError: '',
+                value: e.target.value
             });
         }else{
             setPassword({
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
-                textError: 'Por favor Digite una contraseña con mas de 8 digitos.'
+                textError: 'Por favor Digite una contraseña con mas de 8 digitos.',
+                value: e.target.value
             });
         }
     };
-
-    //funcion de las acciones del formulario para registrar la cuenta
-    const handleSubmit = (e) => {
-        console.log('esta loca esta onda');
-        //falta ver como se hacen las validaciones
-    }
-
     return (
+        <Formik
+            initialValues={{name: '', last_name: '',  age: '', email: '', password: '' }}
+            onSubmit={() => {
+                console.log('estamos contoodooo');
+            }}
+        >
+        {({handleSubmit, isSubmitting}) => (
         <Box sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            mt: 2,
-            mb: 1,
-            p: 1,
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                mt: 2,
+                mb: 1,
+                p: 1,
         }}>
-            <form>
+            <Form onSubmit={handleSubmit}>
                 <Stack sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -140,11 +155,11 @@ export default function Register(){
                     }}
                     spacing={4}
                 >
-                    <TextField onChange={ changeName } error={inputName.error} id={inputName.text} label={inputName.label} variant="outlined" helperText={inputName.textError}/>
-                    <TextField onChange={ changeLName } error={inputLName.error} id={inputLName.text} label={inputLName.label} variant="outlined" helperText={inputLName.textError}/>
-                    <TextField type="number" onChange={ changeAge } error={inputAge.error} id={inputAge.text} label={inputAge.label} variant="outlined" helperText={inputAge.textError}/>
-                    <TextField onChange={ changeMail } error={inputMail.error} id={inputMail.text} label={inputMail.label} variant="outlined" helperText={inputMail.textError}/>
-                    <TextField type="password" onChange={ changePassword } error={inputPassword.error} id={inputPassword.text} label={inputPassword.label} variant="outlined" helperText={inputPassword.textError}/>
+                    <TextField type="text"  name="name" onChange={ changeName } value={inputName.value} error={inputName.error} id={inputName.text} label={inputName.label} variant="outlined" helperText={inputName.textError}/>
+                    <TextField type="text"  name="last_name" onChange={ changeLName } value={inputLName.value} error={inputLName.error} id={inputLName.text} label={inputLName.label} variant="outlined" helperText={inputLName.textError}/>
+                    <TextField type="number" name="age" onChange={ changeAge } value={inputAge.value} error={inputAge.error} id={inputAge.text} label={inputAge.label} variant="outlined" helperText={inputAge.textError}/>
+                    <TextField type="email" name="email" onChange={ changeMail } value={inputMail.value} error={inputMail.error} id={inputMail.text} label={inputMail.label} variant="outlined" helperText={inputMail.textError}/>
+                    <TextField type="password"  name="password" onChange={ changePassword } value={inputPassword.value} error={inputPassword.error} id={inputPassword.text} label={inputPassword.label} variant="outlined" helperText={inputPassword.textError}/>
                 </Stack>
                 <Stack sx={{
                         m: 1,
@@ -155,14 +170,20 @@ export default function Register(){
                 >
                     <Link className="link" to="/login">
                         <Button color="secondary" variant="contained" endIcon={<DoNotDisturbIcon/>}>
-                            cancelar
+                            cancel
                         </Button>
                     </Link>
-                    <Button onClick={handleSubmit} color="primary" variant="contained" endIcon={<DriveFileRenameOutlineIcon />}>
+                    <Button type="submit" disabled={isSubmitting} color="primary" variant="contained" endIcon={<DriveFileRenameOutlineIcon />}>
                         Create Account
                     </Button>
                 </Stack>
-            </form>
+            </Form>
         </Box>
+      )}
+    </Formik>
     );
 }
+
+
+
+

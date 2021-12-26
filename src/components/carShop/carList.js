@@ -100,7 +100,7 @@ export default function CarShopList() {
                       height: '100%',
                     }}
                   />
-                  <CardContent>
+                  <CardContent sx={{m: 2}}>
                     <Typography gutterBottom variant="h5" component="div">
                       {row.name}
                     </Typography>
@@ -108,7 +108,7 @@ export default function CarShopList() {
                       ${(row.protein * row.carbs).toFixed(2)}
                     </Typography>
                   </CardContent>
-                  <CardActions>
+                  <CardActions sx={{m: 2}}>
                     <DeleteToCar open={openDelete} handleClose={handleCloseDelete} />
                     <IconButton onClick={handleOpenDelete} size="large" aria-label="BuyCar" color="error">
                       <RemoveShoppingCartIcon />

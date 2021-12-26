@@ -78,7 +78,7 @@ export default function Home(){
             display: 'flex',
             flexDirection: 'column',
             flexWrap: 'wrap',
-            justifyContent: 'center',
+            justifyContent: 'space-around',
             alignItems: 'center',
             mt: 3,
             mb: 3,
