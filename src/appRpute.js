@@ -34,7 +34,7 @@ export function AppRoute(){
             <Route index element={ <Home/> } />
             <Route path="login" element={ <Login /> }/>
             <Route path="login/register" element={<Register/>} />
-            <Route path="see-product" element={ <SeeProduct /> }/>
+            <Route path="product/see-product/:product_id" element={ <SeeProduct /> }/>
             <Route path="carShop-List" element={ <CarShopList/> } />
             <Route path="categories" element={
               <ListCategories>

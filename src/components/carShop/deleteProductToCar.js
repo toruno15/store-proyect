@@ -16,14 +16,15 @@ export default function DeleteToCar( {open, handleClose, object} ){
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '3px solid #000',
     boxShadow: 24,
     pt: 2,
     px: 4,
     pb: 3,
   };
+
 
   return (
       <Modal
@@ -33,7 +34,12 @@ export default function DeleteToCar( {open, handleClose, object} ){
         aria-describedby="parent-modal-price"
       >
         <Card sx={{...style, maxWidth: 800}}>
-          <CardContent>
+          <CardContent sx={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              flexWrap: 'wrap',
+            }}
+          >
               <p>¿Estas seguro de eliminar este producto, del carrito de compras?</p>
           </CardContent>
           <CardActions>

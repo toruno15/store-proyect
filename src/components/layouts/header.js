@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
@@ -75,9 +75,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function NavBar( { children } ) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-   //para actualizar el estado del icono de compras
-  /*const [addNew, setAddNew] = React.useState(//algun onjeto o contador que vaya cambiando conforme al valor del los otros componentes);*/
+  const [open, setOpen] = useState(false);
+  //para actualizar el estado del icono de compras
+  //const [addNew, setAddNew] = useState(3);
 
   const handleDrawerOpen = () => {
     setOpen(true);

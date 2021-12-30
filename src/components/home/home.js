@@ -10,7 +10,7 @@ import ListProducts from '../products/listProducts';
 import AllCardsCategoriesHome from '../categories/allCardcategoriesHome';
 //import from API's
 import { getCategories } from '../../services/categoriesService';
-import { getProducts } from '../../services/productsService';
+import getProducts from '../../services/product/getAllProducts';
 
 export default function Home(){
   const [products, setProduts] = React.useState([]);

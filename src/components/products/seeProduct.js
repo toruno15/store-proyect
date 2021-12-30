@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,35 +13,42 @@ import AddProductToCar from '../carShop/addtoCarShop';
 //imports of icons
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import  AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+//imports of providers
+import getProduct from '../../services/product/getProduct';
+import { useParams } from 'react-router-dom';
 
-export default function SeeProduct(){
-      return(
-        <React.Fragment>
-          <DescriptionProduct>
-            <Puntuation />
-            <Interaction/>
-          </DescriptionProduct>
-        </React.Fragment>    
+export default function SeeProduct(){ 
+  const [product, setProduct] = useState({});
+  const { product_id } = useParams();
+  
+  const getNewProduct = () => {
+    getProduct(product_id)
+    .then( (newProduct) => {
+      setProduct(newProduct);
+    })
+  };
+
+  useEffect(()=>{
+    getNewProduct();
+  }, []);
+
+    return(
+      <React.Fragment>
+        <DescriptionProduct product={product}>
+          <Puntuation ranking={product.ranking}/>
+          <Interaction product={product}/>
+        </DescriptionProduct>
+      </React.Fragment>    
   );
 }
 
-
-
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const row = new createData('Frozen yoghurt', 159, 6.0, 24, 4.0);
-let object = {image: 'https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg' , name: 'hola', price: 0.00};
-
-const DescriptionProduct = ({ children }) => {
+const DescriptionProduct = ({ children, product }) => {
   return (
     <div className="cardToSee">
         <CardMedia
           component="img"
           sx={{ maxWidth: 700 }}
-          image="https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia-1280x720.jpg"
+          image= {product.image}
           alt="Live from space album cover"
           className='image'
         />
@@ -51,13 +58,13 @@ const DescriptionProduct = ({ children }) => {
             flexWrap: 'wrap'
           }}>
           <Typography component="div" variant="h5">
-            Nombre Producto   
+            {product.name}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            descripcion del producto
+            {product.description}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            Precio del producto, ejemplo: {'$' + 3043.110}
+            {`$ ${product.price}`}
           </Typography>
           <Box sx = {{
             display: 'flex',
@@ -72,10 +79,15 @@ const DescriptionProduct = ({ children }) => {
   );
 }
 
-const Puntuation = () =>{
+const Puntuation = ( {ranking} ) =>{
   const [enabledStars, setEnabledStars] = React.useState(false); 
-  const [valueStars, setValueStars] = React.useState(3);
-  const [updateStars, setUpdateStars] = React.useState(valueStars);
+  const [valueStars, setValueStars] = React.useState(0);
+  const [updateStars, setUpdateStars] = React.useState(0);
+
+  useEffect(()=>{
+    setValueStars(ranking);
+    setUpdateStars(ranking);
+  }, valueStars);
 
   const updateValue = (value) => {
     let thisValue = (value + updateStars) / 2;
@@ -107,9 +119,9 @@ const Puntuation = () =>{
   );
 }
 
-const Interaction = () => {
-  const [openBuy, setOpenBuy] = React.useState(false);
-  
+const Interaction = ({product}) => {
+  const [openBuy, setOpenBuy] = useState(false);
+
   //funstions of states
   const handleOpenBuy = () => {
     setOpenBuy(true);
@@ -129,7 +141,7 @@ const Interaction = () => {
 
   return (
     <React.Fragment>
-      <BuyProduct open={openBuy} handleClose={handleCloseBuy} object={row} />
+      <BuyProduct open={openBuy} handleClose={handleCloseBuy} object={product} />
       <Button sx={{ m: 1,
           maxWidth: 300
         }}
@@ -141,7 +153,7 @@ const Interaction = () => {
       >
         Buy
       </Button>
-      <AddProductToCar open={open} handleClose={handleClose} product={object}/>
+      <AddProductToCar open={open} handleClose={handleClose} product={product}/>
       <Button sx={{ m: 1,
           maxWidth: 300
         }} 

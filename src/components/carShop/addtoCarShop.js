@@ -11,11 +11,6 @@ import Stack from '@mui/material/Stack';
 //import incons
 import CancelIcon from '@mui/icons-material/Cancel';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-//imports of formik
-import {
-    Formik,
-    Form
-} from 'formik';
 
 const style = {
   position: 'absolute',
