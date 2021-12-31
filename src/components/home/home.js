@@ -8,6 +8,7 @@ import ListCategories from '../categories/listCategories';
 import AllCards from '../layouts/allCards';
 import ListProducts from '../products/listProducts';
 import AllCardsCategoriesHome from '../categories/allCardcategoriesHome';
+import Skeleto from '../layouts/skeleton';
 //import from API's
 import { getCategories } from '../../services/categoriesService';
 import getProducts from '../../services/product/getAllProducts';
@@ -55,24 +56,6 @@ export default function Home(){
           justifyContent: 'center',
         }}
       >
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          mt: 3,
-          mb: 3,
-          }}
-        >
-          <Typography gutterBottom variant="h5" component="div">
-            Categories
-          </Typography>
-          <ListCategories>
-            <AllCardsCategoriesHome objects={categories} />
-          </ListCategories>
-        </Box>
-        <Divider/>
         <Box 
           sx={{
             display: 'flex',
@@ -88,8 +71,26 @@ export default function Home(){
             Products
           </Typography>
           <ListProducts>
-            <AllCards objects={ products }/>
+              { (products.length === 0) ? <Skeleto/> : <AllCards objects={ products }/> }
           </ListProducts>
+        </Box>
+        <Divider />
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 3,
+          mb: 3,
+          }}
+        >
+          <Typography gutterBottom variant="h5" component="div">
+            Categories
+          </Typography>
+          <ListCategories>
+            { (categories.length === 0) ? <Skeleto/> : <AllCardsCategoriesHome objects={categories} /> }
+          </ListCategories>
         </Box>
       </Box>
     </React.Fragment>

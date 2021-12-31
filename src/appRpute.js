@@ -8,6 +8,7 @@ import SeeProduct from './components/products/seeProduct';
 import Main from './components/layouts/main';
 import ListCategories from './components/categories/listCategories';
 import AllCardsCategories from './components/categories/allCardCategories';
+import Skeleto from './components/layouts/skeleton';
 import Login from './components/login/login';
 //imports from API's
 import { getCategories } from './services/categoriesService';
@@ -38,7 +39,7 @@ export function AppRoute(){
             <Route path="carShop-List" element={ <CarShopList/> } />
             <Route path="categories" element={
               <ListCategories>
-                <AllCardsCategories objects={categories}/>
+                { (categories.length === 0) ? <Skeleto /> : <AllCardsCategories objects={categories}/> }
               </ListCategories> } 
             />
           </Route>

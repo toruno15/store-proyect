@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Skeleton from '@mui/material/Skeleton';
 import { Button } from '@mui/material';
 //imports of styles
 import './stylesProducts/cardSee.css';
@@ -18,7 +19,7 @@ import getProduct from '../../services/product/getProduct';
 import { useParams } from 'react-router-dom';
 
 export default function SeeProduct(){ 
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState();
   const { product_id } = useParams();
   
   const getNewProduct = () => {
@@ -34,11 +35,13 @@ export default function SeeProduct(){
 
     return(
       <React.Fragment>
-        <DescriptionProduct product={product}>
+        { (!product )
+        ? <Skelet/> 
+        : <DescriptionProduct product={product}>
           <Puntuation ranking={product.ranking}/>
           <Interaction product={product}/>
-        </DescriptionProduct>
-      </React.Fragment>    
+        </DescriptionProduct> }
+      </React.Fragment>
   );
 }
 
@@ -165,5 +168,26 @@ const Interaction = ({product}) => {
         Add To carShop
       </Button>
     </React.Fragment>
+  );
+}
+
+const Skelet = () =>{
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      }}
+    >
+      <Box sx={{ width: "100%" }}>
+        <Skeleton height={300} />
+        <Skeleton />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation={false} />
+        <Skeleton animation={false} />
+      </Box>
+    </Box>
   );
 }
