@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -16,23 +16,18 @@ import './styles/carList.css';
 //imports of componnets
 import BuyProduct from './BuyProduct';
 import DeleteToCar from './deleteProductToCar';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+//imports from API's
+import getCarPorduct from '../../services/carProduct/getCarProduct';
 
 export default function CarShopList() {
   //states
-  const [openBuy, setOpenBuy] = React.useState(false);
-  const [openDelete, setOpenDelete] = React.useState(false);
+  const [openBuy, setOpenBuy] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [products, setProducts] = useState([]);
+  
+  useEffect(()=>{
+    getNewCarPorducts(2);
+  }, []);
 
   //funstions of states
   const handleOpenBuy = () => {
@@ -49,6 +44,12 @@ export default function CarShopList() {
 
   const handleCloseDelete = () => {
     setOpenDelete(false);
+  };
+
+  const getNewCarPorducts = () =>{
+    getCarPorduct(2).then((data) =>{
+      setProducts(data.products);
+    });
   };
 
   return (
@@ -79,7 +80,7 @@ export default function CarShopList() {
             m: 1,
           }}
         >
-          {rows.map((row) => (
+          {products.map((product) => (
               <Card sx={{
                 minWidth: 280,
                 maxWidth: 1000,
@@ -93,7 +94,7 @@ export default function CarShopList() {
               }}>
                   <CardMedia
                     component="img"
-                    image='https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg'
+                    image="https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia-1280x720.jpg"
                     alt="green iguana"
                     sx={{
                       maxWidth: 300,
@@ -102,10 +103,10 @@ export default function CarShopList() {
                   />
                   <CardContent sx={{m: 2}}>
                     <Typography gutterBottom variant="h5" component="div">
-                      {row.name}
+                      ya la esta
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      ${(row.protein * row.carbs).toFixed(2)}
+                      Total: ${product.total}  Cant: {product.cant}
                     </Typography>
                   </CardContent>
                   <CardActions sx={{m: 2}}>
@@ -113,7 +114,7 @@ export default function CarShopList() {
                     <IconButton onClick={handleOpenDelete} size="large" aria-label="BuyCar" color="error">
                       <RemoveShoppingCartIcon />
                     </IconButton>
-                    <BuyProduct open={openBuy} handleClose={handleCloseBuy} object={row} />
+                    <BuyProduct open={openBuy} handleClose={handleCloseBuy} ident={product.productId} />
                     <IconButton onClick={handleOpenBuy} size="large" aria-label="BuyCar" color="success">
                       <MonetizationOnIcon />
                     </IconButton>

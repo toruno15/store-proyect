@@ -144,7 +144,7 @@ const Interaction = ({product}) => {
 
   return (
     <React.Fragment>
-      <BuyProduct open={openBuy} handleClose={handleCloseBuy} object={product} />
+      <BuyProduct open={openBuy} handleClose={handleCloseBuy} index={product.id} />
       <Button sx={{ m: 1,
           maxWidth: 300
         }}

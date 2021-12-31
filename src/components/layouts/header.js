@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ChangecarContext from './contextCarShop';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
@@ -76,8 +77,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function NavBar( { children } ) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  //para actualizar el estado del icono de compras
-  //const [addNew, setAddNew] = useState(3);
+  const [addNew, setAddNew] = useState(3);
+
+  const updateCantCarShop = (cant) =>{
+    setAddNew(cant);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -154,7 +158,7 @@ export default function NavBar( { children } ) {
               <ListItemIcon>
                 <Link className="link" to="/carShop-List" >
                   <IconButton size="large" aria-label="BuyCar" color="inherit">
-                    <Badge badgeContent={1} color="error">
+                    <Badge badgeContent={addNew} color="error">
                       <ShoppingCartIcon/>
                     </Badge>
                   </IconButton>
@@ -182,10 +186,12 @@ export default function NavBar( { children } ) {
             </ListItem>
         </List>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        {children}
-      </Main>
+      <ChangecarContext.Provider value={updateCantCarShop}>
+        <Main open={open}>
+          <DrawerHeader />
+          {children}
+        </Main>
+      </ChangecarContext.Provider>
     </Box>
   );
 }

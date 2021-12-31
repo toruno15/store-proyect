@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export default function DeleteToCar( {open, handleClose, object} ){
+export default function DeleteToCar( {open, handleClose, carShop, index} ){
   const style = {
     position: 'absolute',
     top: '50%',
@@ -25,6 +25,9 @@ export default function DeleteToCar( {open, handleClose, object} ){
     pb: 3,
   };
 
+  const deleteProduct = () =>{
+    carShop.products.pop();
+  };
 
   return (
       <Modal
@@ -56,7 +59,7 @@ export default function DeleteToCar( {open, handleClose, object} ){
                   <Button onClick={handleClose} color="secondary" variant="outlined" endIcon={<CancelIcon />}>
                     Cancel
                   </Button>
-                  <Button color="error" variant="contained" endIcon={<DeleteForeverIcon />}>
+                  <Button onClick={deleteProduct} color="error" variant="contained" endIcon={<DeleteForeverIcon />}>
                     Delete
                   </Button>
                 </Stack>

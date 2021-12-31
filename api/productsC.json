@@ -1,32 +1,233 @@
 {
-    "users": [
-        {"id": 1, "name": "User Admin", "userName": "userAmin", "type": "admin", "age": 21, "email": "giotoruno10@gmail.com", "password": 12345678},
-        {"id": 2, "name": "jose", "userName": "toruno15", "type": "client", "age": 21, "email": "cruzgiovanni2000@gmaiil.com", "password": 87654321}
-    ],
-    "products": [
-        {"id": 1, "categoryId": 1, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 2, "categoryId": 2, "name": "camisa", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 15.25, "ranking": 4},
-        {"id": 3, "categoryId": 3, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 5},
-        {"id": 4, "categoryId": 4, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 5, "categoryId": 5, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 6, "categoryId": 6, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 7, "categoryId": 1, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 8, "categoryId": 2, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 9, "categoryId": 3, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 10, "categoryId": 4, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 11, "categoryId": 5, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3},
-        {"id": 12, "categoryId": 6, "name": "hola", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "breve",  "price": 0.00, "ranking": 3}
-    ],
-    "categories": [
-        {"id": 1,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"},
-        {"id": 2,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"},
-        {"id": 3,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"},
-        {"id": 4,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"},
-        {"id": 5,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"},
-        {"id": 6,  "name": "nombre categoria", "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg", "description": "una descripcioncita de la categoria"}        
-    ],
-    "ProductscarShop": [
-        {"id": 1, "productId": 1, "price": 25.50, "cant": 2},
-        {"id": 2, "productId": 3, "price": 80.69, "cant": 5}
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "User Admin",
+      "userName": "userAmin",
+      "type": "admin",
+      "age": 21,
+      "email": "giotoruno10@gmail.com",
+      "password": 12345678
+    },
+    {
+      "id": 2,
+      "name": "jose",
+      "userName": "toruno15",
+      "type": "client",
+      "age": 21,
+      "email": "cruzgiovanni2000@gmaiil.com",
+      "password": 87654321
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "categoryId": 1,
+      "name": "Cocina",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 2,
+      "categoryId": 2,
+      "name": "camisa",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 15.25,
+      "ranking": 4
+    },
+    {
+      "id": 3,
+      "categoryId": 3,
+      "name": "Lavadora",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 5
+    },
+    {
+      "id": 4,
+      "categoryId": 4,
+      "name": "Zapatos",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 5,
+      "categoryId": 5,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 6,
+      "categoryId": 6,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 7,
+      "categoryId": 1,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 8,
+      "categoryId": 2,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 9,
+      "categoryId": 3,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 10,
+      "categoryId": 4,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 11,
+      "categoryId": 5,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    },
+    {
+      "id": 12,
+      "categoryId": 6,
+      "name": "hola",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "breve",
+      "price": 0,
+      "ranking": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    },
+    {
+      "id": 2,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    },
+    {
+      "id": 3,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    },
+    {
+      "id": 4,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    },
+    {
+      "id": 5,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    },
+    {
+      "id": 6,
+      "name": "nombre categoria",
+      "image": "https://www.ambientum.com/wp-content/uploads/2019/07/naturaleza-sol-arboles-696x463.jpg",
+      "description": "una descripcioncita de la categoria"
+    }
+  ],
+  "carShop": [
+    {
+      "id": 1,
+      "userId": 1,
+      "products": [
+        {
+          "productId": 1,
+          "total": 40.5,
+          "cant": 2
+        },
+        {
+          "productId": 1,
+          "total": 26.3,
+          "cant": 2
+        },
+        {
+          "productId": 1,
+          "total": 23.65,
+          "cant": 2
+        },
+        {
+          "productId": 1,
+          "total": 25.6,
+          "cant": 2
+        }
+      ]
+    },
+    {
+      "userId": 2,
+      "products": [{
+        "productId": 2,
+        "total": 549,
+        "cant": "36"
+      }],
+      "id": 2
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "products": [
+        {
+          "productId": 1,
+          "total": 40.5,
+          "cant": 2
+        },
+        {
+          "productId": 2,
+          "total": 26.3,
+          "cant": 2
+        },
+        {
+          "productId": 3,
+          "total": 23.65,
+          "cant": 2
+        },
+        {
+          "productId": 4,
+          "total": 25.6,
+          "cant": 2
+        }
+      ]
+    }
+  ]
 }

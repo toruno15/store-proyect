@@ -9,8 +9,23 @@ import Stack from '@mui/material/Stack';
 //import incons
 import CancelIcon from '@mui/icons-material/Cancel';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+//imports od API's
+import getProduct from '../../services/product/getProduct';
 
-export default function BuyProduct( {open, handleClose, object} ){
+export default function BuyProduct( {open, handleClose, index} ){
+  const [object, setObject] = React.useState({});
+
+  React.useEffect( () =>{
+    getNewObject();
+  }, object);
+
+  const getNewObject = () =>{
+    getProduct(index).then((data) =>{
+      setObject(data);
+    });
+  };
+
+
   const style = {
     position: 'absolute',
     top: '50%',

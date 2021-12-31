@@ -8,9 +8,12 @@ import CardMedia from '@mui/material/CardMedia';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
 //import incons
 import CancelIcon from '@mui/icons-material/Cancel';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+//imports of Apis
+import addCarProduct from '../../services/carProduct/addCarProduct';
 
 const style = {
   position: 'absolute',
@@ -25,11 +28,11 @@ const style = {
   px: 4,
   pb: 3,
 };
-//falta hacer la interacion de enviar el producto al carrito y verlo
-//tambien hay que ver si de alguna manera se modifica el carrito del logo para el contador
 
 export default function AddProductToCar({open, handleClose, product}) {
   const [inputCant, setInputCant] = useState({text: 'outlined-basic', label : 'Cant', value: '', error : false, textError :''});
+  const [enableButton, setButton] = useState(true);
+  const [isGood, setGood] = useState(false);
 
   const changeInput = (e) => {
      if((new RegExp('^[1-9][0-9]?$')).test(e.target.value)){
@@ -40,6 +43,7 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: '',
         value: e.target.value
       });
+      setButton(false);
     }else{
       setInputCant({
         text: 'outlined-error-helper-text',
@@ -48,15 +52,28 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: 'ERROR!. Digite un número mayor a cero.',
         value: e.target.value
       });
+      setButton(true);
     }
   }
 
-//falta terminar este metodo solo es de hacer la api y mandar el objeto ahi
-  /*
-  const handleSubmit = ()=>{
-
+  const handleSubmit = () => {
+    addCarProduct({
+      userId: 2,
+      products: {
+        productId: product.id,
+        total: (product.price * inputCant.value),
+        cant: inputCant.value
+      }
+    }, 2).then(data =>{
+      console.log(data);
+    });
+    setGood(true);
+    setInputCant({text: 'outlined-basic', label : 'Cant', value: '', error : false, textError :''});
+    setTimeout(()=>{
+      handleClose();
+    }, 2500);
   };
-  */
+  
   return (
     <React.Fragment>
       <Modal
@@ -92,46 +109,20 @@ export default function AddProductToCar({open, handleClose, product}) {
                 <Button onClick={handleClose} color="secondary" variant="outlined" endIcon={<CancelIcon />}>
                   Cancel
                 </Button>
-                <Button color="success" variant="contained" endIcon={<ShoppingCartCheckoutIcon />}>
+                <Button onClick={handleSubmit} disabled={enableButton} color="success" variant="contained" endIcon={<ShoppingCartCheckoutIcon />}>
                   Send
                 </Button>
               </Stack>
             </Box>
           </CardActions>
+          { isGood ?
+            <Stack sx={{ width: '100%' }} spacing={2}> 
+              <Alert>El o Los productos ha sido agregado al carrito. !!Revisalo!!</Alert>
+            </Stack>
+            : null
+          }
         </Card>
       </Modal>
     </React.Fragment>
   );
 }
-
-
-//las alerts o toast notifications
-/*import * as React from 'react';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-
-export default function DescriptionAlerts() {
-  return (
-    <Stack sx={{ width: '100%' }} spacing={2}>
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        This is an error alert — <strong>check it out!</strong>
-      </Alert>
-      <Alert severity="warning">
-        <AlertTitle>Warning</AlertTitle>
-        This is a warning alert — <strong>check it out!</strong>
-      </Alert>
-      <Alert severity="info">
-        <AlertTitle>Info</AlertTitle>
-        This is an info alert — <strong>check it out!</strong>
-      </Alert>
-      <Alert severity="success">
-        <AlertTitle>Success</AlertTitle>
-        This is a success alert — <strong>check it out!</strong>
-      </Alert>
-    </Stack>
-  );
-}
-
- */
