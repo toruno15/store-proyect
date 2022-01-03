@@ -33,11 +33,11 @@ export function AppRoute(){
         <Routes>
           <Route path="/" element={ <Main /> }>
             <Route index element={ <Home/> } />
-            <Route path="login" element={ <Login /> }/>
+            <Route path=":isLoggin/:userId/login" element={ <Login /> }/>
             <Route path="login/register" element={<Register/>} />
-            <Route path="product/see-product/:product_id" element={ <SeeProduct /> }/>
-            <Route path="carShop-List" element={ <CarShopList/> } />
-            <Route path="categories" element={
+            <Route path=":isLoggin/:userId/product/see-product/:product_id" element={ <SeeProduct /> }/>
+            <Route path=":isLoggin/:userId/carShop-List" element={ <CarShopList/> } />
+            <Route path=":isLoggin/:userId/categories" element={
               <ListCategories>
                 { (categories.length === 0) ? <Skeleto /> : <AllCardsCategories objects={categories}/> }
               </ListCategories> } 

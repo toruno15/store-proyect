@@ -168,7 +168,7 @@ export default function Register(){
                     spacing={4}
                     direction='row'
                 >
-                    <Link className="link" to="/login">
+                    <Link className="link" to="/false/0/login">
                         <Button color="secondary" variant="contained" endIcon={<DoNotDisturbIcon/>}>
                             cancel
                         </Button>

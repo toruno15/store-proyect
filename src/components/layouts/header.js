@@ -111,7 +111,7 @@ export default function NavBar( { children } ) {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Store
           </Typography>
-          <Link className="link" to="/login">
+          <Link className="link" to="false/0/login">
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -156,7 +156,7 @@ export default function NavBar( { children } ) {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <Link className="link" to="/carShop-List" >
+                <Link className="link" to="false/0/carShop-List" >
                   <IconButton size="large" aria-label="BuyCar" color="inherit">
                     <Badge badgeContent={addNew} color="error">
                       <ShoppingCartIcon/>
@@ -168,7 +168,7 @@ export default function NavBar( { children } ) {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <Link className="link" to='/categories'>
+                <Link className="link" to='false/0/categories'>
                   <IconButton>
                     <StyleIcon/>
                   </IconButton>

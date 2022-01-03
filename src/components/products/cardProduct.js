@@ -47,7 +47,7 @@ export default function CarProduct({product}) {
           readOnly
         />
         <CardActions>
-          <Link to={`product/see-product/${product.id}`}>
+          <Link to={`/${false}/${0}/product/see-product/${product.id}`}>
             <IconButton size="large" aria-label="BuyCar" color="secondary">
                   <VisibilityIcon />
             </IconButton>
