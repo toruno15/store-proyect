@@ -1,15 +1,12 @@
 import React from 'react';
+import CarProduct from './cardProduct';
 import Box from '@mui/material/Box';
-import CardCategory from "./cardCategory";
 import '../../styles/card.css';
-import { Link } from 'react-router-dom';
 
-export default function AllCardsCategoriesHome( {objects} ) {
-    const lista = objects.slice(0, 4).map((objeto) =>
+export default function AllCardsProducts({ objects }){
+    const lista = objects.map((objeto)=>
         <div key={objeto.id} class="card">
-            <Link className='link' to={`/categories/products/${objeto.id}`}>
-                <CardCategory category={objeto}/>
-            </Link>
+            <CarProduct product={objeto}/>
         </div>
     );
     return(
@@ -18,7 +15,7 @@ export default function AllCardsCategoriesHome( {objects} ) {
                 sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: 'center',
+                justifyContent: 'space-around',
                 }}
             > 
                 {lista}

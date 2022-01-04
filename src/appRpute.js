@@ -8,11 +8,12 @@ import SeeProduct from './components/products/seeProduct';
 import Main from './components/layouts/main';
 import ListCategories from './components/categories/listCategories';
 import AllCardsCategories from './components/categories/allCardCategories';
-import Skeleto from './components/layouts/skeleton';
+import SkeletoMultiple from './components/layouts/skeletonMultiple';import Skeleto from './components/layouts/skeleton';
 import Login from './components/login/login';
 //imports from API's
 import { getCategories } from './services/categoriesService';
 import Register from './components/login/register';
+import ShowProducts from './components/categories/showProductsForCategory';
 
 export function AppRoute(){
   const[categories, setCategories] = React.useState([]);
@@ -37,11 +38,12 @@ export function AppRoute(){
             <Route path="login/register" element={<Register/>} />
             <Route path=":isLoggin/:userId/product/see-product/:product_id" element={ <SeeProduct /> }/>
             <Route path=":isLoggin/:userId/carShop-List" element={ <CarShopList/> } />
-            <Route path=":isLoggin/:userId/categories" element={
+            <Route path=":categories" element={
               <ListCategories>
-                { (categories.length === 0) ? <Skeleto /> : <AllCardsCategories objects={categories}/> }
+                { (categories.length === 0) ? <SkeletoMultiple /> : <AllCardsCategories objects={categories}/> }
               </ListCategories> } 
             />
+            <Route path="categories/products/:categoryId" element={<ShowProducts/>} />
           </Route>
         </Routes>
       </Router>

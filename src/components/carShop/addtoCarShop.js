@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import ChangecarContext from '../layouts/contextCarShop';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -34,6 +35,8 @@ export default function AddProductToCar({open, handleClose, product}) {
   const [enableButton, setButton] = useState(true);
   const [isGood, setGood] = useState(false);
 
+  const cambio = useContext(ChangecarContext);
+
   const changeInput = (e) => {
      if((new RegExp('^[1-9][0-9]?$')).test(e.target.value)){
       setInputCant({
@@ -43,6 +46,7 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: '',
         value: e.target.value
       });
+      cambio(5);
       setButton(false);
     }else{
       setInputCant({
@@ -52,6 +56,7 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: 'ERROR!. Digite un número mayor a cero.',
         value: e.target.value
       });
+      cambio(6);
       setButton(true);
     }
   }

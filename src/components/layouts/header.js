@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import ChangecarContext from './contextCarShop';
+import UserLoginContext from './contextLoginUsers';
+//imports from material UI
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
@@ -77,7 +79,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function NavBar( { children } ) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [addNew, setAddNew] = useState(3);
+  const [addNew, setAddNew] = useState(0);
+  const [isLoginUser, setLoginUser] = useState( {state: false, userId: 0});
+
+  const updateLogginUser = (state, ident) =>{
+      setLoginUser({state: state, userId: ident});
+  };
 
   const updateCantCarShop = (cant) =>{
     setAddNew(cant);
@@ -92,106 +99,108 @@ export default function NavBar( { children } ) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: '36px',
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Store
-          </Typography>
-          <Link className="link" to="false/0/login">
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Link>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
+    <UserLoginContext.Provider value={updateLogginUser}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: '36px',
+                ...(open && { display: 'none' }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+              Store
+            </Typography>
+            <Link className="link" to={`${isLoginUser.state}/${isLoginUser.userId}/login`}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </Link>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          sx={{
             width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-          </DrawerHeader>
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: drawerWidth,
+              boxSizing: 'border-box',
+            },
+          }}
+          variant="persistent"
+          anchor="left"
+          open={open}
+        >
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+            </DrawerHeader>
+            <Divider />
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  <Link className="link" to="/" >
+                    <IconButton size="large" aria-label="home" color="inherit">
+                      <HomeIcon />
+                    </IconButton>
+                  </Link>
+                </ListItemIcon>
+                <ListItemText primary='Home' />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <Link className="link" to={`${isLoginUser.state}/${isLoginUser.userId}/carShop-List`}>
+                    <IconButton size="large" aria-label="BuyCar" color="inherit">
+                      <Badge badgeContent={addNew} color="error">
+                        <ShoppingCartIcon/>
+                      </Badge>
+                    </IconButton>
+                  </Link>
+                </ListItemIcon>
+                <ListItemText primary='Car Shopping' />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <Link className="link" to="/categories">
+                    <IconButton>
+                      <StyleIcon/>
+                    </IconButton>
+                  </Link>
+                </ListItemIcon>
+                <ListItemText primary='Categories' />
+              </ListItem>
+          </List>
           <Divider />
           <List>
             <ListItem>
-              <ListItemIcon>
-                <Link className="link" to="/" >
-                  <IconButton size="large" aria-label="home" color="inherit">
-                    <HomeIcon />
-                  </IconButton>
-                </Link>
-              </ListItemIcon>
-              <ListItemText primary='Home' />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <Link className="link" to="false/0/carShop-List" >
-                  <IconButton size="large" aria-label="BuyCar" color="inherit">
-                    <Badge badgeContent={addNew} color="error">
-                      <ShoppingCartIcon/>
-                    </Badge>
-                  </IconButton>
-                </Link>
-              </ListItemIcon>
-              <ListItemText primary='Car Shopping' />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <Link className="link" to='false/0/categories'>
-                  <IconButton>
-                    <StyleIcon/>
-                  </IconButton>
-                </Link>
-              </ListItemIcon>
-              <ListItemText primary='Categories' />
-            </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem>
-              <ListItemIcon>
-                {/*iconos del usuario loguiado, por el momento esta en pendientes*/}
-              </ListItemIcon>
-            </ListItem>
-        </List>
-      </Drawer>
-      <ChangecarContext.Provider value={updateCantCarShop}>
-        <Main open={open}>
-          <DrawerHeader />
-          {children}
-        </Main>
-      </ChangecarContext.Provider>
-    </Box>
+                <ListItemIcon>
+                  {/*iconos del usuario loguiado, por el momento estan pendientes*/}
+                </ListItemIcon>
+              </ListItem>
+          </List>
+        </Drawer>
+        <ChangecarContext.Provider value={updateCantCarShop}>
+          <Main open={open}>
+            <DrawerHeader />
+            {children}
+          </Main>
+        </ChangecarContext.Provider>
+      </Box>
+    </UserLoginContext.Provider>
   );
 }
