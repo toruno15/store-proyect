@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+//imports of contetxs
 import ChangecarContext from './contextCarShop';
 import UserLoginContext from './contextLoginUsers';
 //imports from material UI
@@ -162,18 +163,21 @@ export default function NavBar( { children } ) {
                 </ListItemIcon>
                 <ListItemText primary='Home' />
               </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <Link className="link" to={`${isLoginUser.state}/${isLoginUser.userId}/carShop-List`}>
-                    <IconButton size="large" aria-label="BuyCar" color="inherit">
-                      <Badge badgeContent={addNew} color="error">
-                        <ShoppingCartIcon/>
-                      </Badge>
-                    </IconButton>
-                  </Link>
-                </ListItemIcon>
-                <ListItemText primary='Car Shopping' />
-              </ListItem>
+              {isLoginUser.state
+                ? <ListItem>
+                  <ListItemIcon>
+                    <Link className="link" to={`${isLoginUser.state}/${isLoginUser.userId}/carShop-List`}>
+                      <IconButton size="large" aria-label="BuyCar" color="inherit">
+                        <Badge badgeContent={addNew} color="error">
+                          <ShoppingCartIcon/>
+                        </Badge>
+                      </IconButton>
+                    </Link>
+                  </ListItemIcon>
+                  <ListItemText primary='Car Shopping' />
+                </ListItem>               
+                : null
+              }
               <ListItem>
                 <ListItemIcon>
                   <Link className="link" to="/categories">

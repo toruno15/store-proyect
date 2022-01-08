@@ -11,7 +11,7 @@ import AllCardsCategories from './components/categories/allCardCategories';
 import SkeletoMultiple from './components/layouts/skeletonMultiple';import Skeleto from './components/layouts/skeleton';
 import Login from './components/login/login';
 //imports from API's
-import { getCategories } from './services/categoriesService';
+import getCategories from './services/category/getAllCategories';
 import Register from './components/login/register';
 import ShowProducts from './components/categories/showProductsForCategory';
 
@@ -43,7 +43,7 @@ export function AppRoute(){
                 { (categories.length === 0) ? <SkeletoMultiple /> : <AllCardsCategories objects={categories}/> }
               </ListCategories> } 
             />
-            <Route path="categories/products/:categoryId" element={<ShowProducts/>} />
+            <Route path="categories/products/:category_id" element={<ShowProducts/>} />
           </Route>
         </Routes>
       </Router>

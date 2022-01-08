@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -9,8 +9,11 @@ import Stack from '@mui/material/Stack';
 //import incons
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+//import of API'
+import deleteCarPorduct from '../../services/carProduct/deleteCarProduct';
 
-export default function DeleteToCar( {open, handleClose, carShop, index} ){
+export default function DeleteToCar( {open, handleClose, carShopObjects, index} ){
+  
   const style = {
     position: 'absolute',
     top: '50%',
@@ -26,7 +29,11 @@ export default function DeleteToCar( {open, handleClose, carShop, index} ){
   };
 
   const deleteProduct = () =>{
-    carShop.products.pop();
+    /*deleteCarPorduct(carShopObjects, index).then(data =>{
+      console.log(data);
+    });*/
+    console.log("de momento es de lo ultimo y lo mas complejo");
+    handleClose();
   };
 
   return (

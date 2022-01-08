@@ -1,6 +1,6 @@
 const apiurl_Categories = 'http://localhost:5300/categories';
 
-export const getCategories = async () => {
+const getCategories = async () => {
     try{
         const res = await fetch(`${apiurl_Categories}`, {method: 'GET'})
         const categories = await res.json();
@@ -9,3 +9,5 @@ export const getCategories = async () => {
         console.error(e.message)
     }
 }
+
+export default getCategories;

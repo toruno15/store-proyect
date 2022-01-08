@@ -10,7 +10,7 @@ import ListProducts from '../products/listProducts';
 import AllCardsCategoriesHome from '../categories/allCardcategoriesHome';
 import Skeleto from '../layouts/skeleton';
 //import from API's
-import { getCategories } from '../../services/categoriesService';
+import getCategories from '../../services/category/getAllCategories';
 import getProducts from '../../services/product/getAllProducts';
 
 export default function Home(){

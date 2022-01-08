@@ -3,11 +3,11 @@
     {
       "id": 1,
       "name": "User Admin",
-      "userName": "userAmin",
+      "userName": "userAdmin",
       "type": "admin",
       "age": 21,
       "email": "giotoruno10@gmail.com",
-      "password": 12345678
+      "password": "12345678"
     },
     {
       "id": 2,
@@ -16,7 +16,16 @@
       "type": "client",
       "age": 21,
       "email": "cruzgiovanni2000@gmaiil.com",
-      "password": 87654321
+      "password": "87654321"
+    },
+    {
+      "name": "pedro",
+      "userName": "pedro15",
+      "type": "client",
+      "age": "19",
+      "email": "pedro15@gmail.com",
+      "password": "123456789",
+      "id": 3
     }
   ],
   "products": [
@@ -171,11 +180,12 @@
     {
       "id": 1,
       "userId": 1,
+      "cantTotal": 11,
       "products": [
         {
           "productId": 1,
           "total": 40.5,
-          "cant": 2
+          "cant": 5
         },
         {
           "productId": 1,
@@ -195,17 +205,41 @@
       ]
     },
     {
+      "id": 2,
       "userId": 2,
-      "products": [{
-        "productId": 2,
-        "total": 549,
-        "cant": "36"
-      }],
-      "id": 2
+      "cantTotal": 10,
+      "products": [
+        {
+          "productId": 2,
+          "total": 549,
+          "cant": "36"
+        },
+        {
+          "productId": 2,
+          "total": 549,
+          "cant": "36"
+        },
+        {
+          "productId": 2,
+          "total": 549,
+          "cant": "36"
+        },
+        {
+          "productId": 2,
+          "total": 549,
+          "cant": "36"
+        },
+        {
+          "productId": 2,
+          "total": 549,
+          "cant": "36"
+        }
+      ]
     },
     {
       "id": 3,
       "userId": 3,
+      "cantTotal": 4, 
       "products": [
         {
           "productId": 1,
@@ -215,16 +249,6 @@
         {
           "productId": 2,
           "total": 26.3,
-          "cant": 2
-        },
-        {
-          "productId": 3,
-          "total": 23.65,
-          "cant": 2
-        },
-        {
-          "productId": 4,
-          "total": 25.6,
           "cant": 2
         }
       ]

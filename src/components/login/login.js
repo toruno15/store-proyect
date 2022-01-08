@@ -17,7 +17,6 @@ import './styles/login.css';
 //imports from reac-router
 import { Link, Outlet, useParams} from 'react-router-dom';
 //imports from API's
-import getUser from '../../services/user/getUser';
 import getUsers from '../../services/user/getUsers';
 
 export default function Login(){
@@ -87,7 +86,7 @@ export default function Login(){
                 setTimeout(() => {
                     setIsGood(false);
                     setButton(true);
-                    updateLoginUser(true, 2);
+                    updateLoginUser(true, data.id);
                     changeStateLoginUser(true);
                 }, 2300);
             }else{
@@ -101,8 +100,7 @@ export default function Login(){
         <React.Fragment>
             {stateLog
                 ? <Logout setStateLogin={changeStateLoginUser}/>
-                :
-                <React.Fragment>
+                :<React.Fragment>
                     {isGood ? <StateAlert isValid={isPerfect}/> : null}
                     <Box sx={{
                             display: 'flex',

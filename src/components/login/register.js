@@ -13,14 +13,18 @@ import {
     Formik,
     Form
 } from 'formik';
+//imports of API's
+import addUser from '../../services/user/addUser';
 
 export default function Register(){
     //states
     const [inputName, setName] = useState({text: 'outlined-basic', label : 'Name', value: '', error : false, textError :''});
-    const [inputLName, setLastname] = useState({text: 'outlined-basic', label : 'Last Name', value: '', error : false, textError :''});
+    const [inputUserName, setUserName] = useState({text: 'outlined-basic', label : 'user Name', value: '', error : false, textError :''});
     const [inputAge, setAge] = useState({text: 'outlined-basic', label : 'Age', value: '', error : false, textError :''});
     const [inputMail, setMail] = useState({text: 'outlined-basic', label : 'E-Mail', value: '', error : false, textError :''});
-    const [inputPassword, setPassword] = useState({text: 'outlined-basic', label : 'Password',  value: '', error : false, textError :''});
+    const [inputPassword, setPassword] = useState({text: 'outlined-basic', label : 'password',  value: '', error : false, textError :''});
+    //estado que contyrola si el boton estara habilitado o no
+    const [dissabledButton, setButton] = useState(true);
 
     //funciones que validan los cambios de los inputs
     const changeName = (e) =>{
@@ -32,7 +36,7 @@ export default function Register(){
                 textError: '',
                 value: e.target.value
             });
-            return true;
+            enabledButton();
         }else{
             setName({
                 text: 'outlined-error-helper-text',
@@ -41,29 +45,29 @@ export default function Register(){
                 textError: 'Por favor Digite un nombre valido.',
                 value: e.target.value
             });
-            return false;
+            setButton(true);
         }
     };
 
-    const changeLName = (e) =>{
-        if((new RegExp('^[a-zA-Z]+$')).test(e.target.value)){
-            setLastname({
+    const changeUserName = (e) =>{
+        if((new RegExp('^\\w+$')).test(e.target.value)){
+            setUserName({
                 text: 'outlined-basic',
-                label: 'Last Name',
+                label: 'user Name',
                 error: false,
                 textError: '',
                 value: e.target.value
             });
-            return true;
+            enabledButton();
         }else{
-            setLastname({
+            setUserName({
                 text: 'outlined-error-helper-text',
                 label: 'Error',
                 error: true,
                 textError: 'Por favor Digite un apellido valido.',
                 value: e.target.value
             });
-            return false;
+            setButton(true);
         }
     };
 
@@ -76,7 +80,7 @@ export default function Register(){
                 textError: '',
                 value: e.target.value
             });
-            return true;
+            enabledButton();
         }else{
             setAge({
                 text: 'outlined-error-helper-text',
@@ -85,7 +89,7 @@ export default function Register(){
                 textError: 'Digite una edad validad por favor.',
                 value: e.target.value
             });
-            return false;
+            setButton(true);
         }
     };
 
@@ -98,6 +102,7 @@ export default function Register(){
                 textError: '',
                 value: e.target.value
             });
+            enabledButton();
         }else{
             setMail({
                 text: 'outlined-error-helper-text',
@@ -106,6 +111,7 @@ export default function Register(){
                 textError: 'Por favor Digite un correo electronico valido.',
                 value: e.target.value
             });
+            setButton(true);
         }
     };
 
@@ -118,6 +124,7 @@ export default function Register(){
                 textError: '',
                 value: e.target.value
             });
+            enabledButton();
         }else{
             setPassword({
                 text: 'outlined-error-helper-text',
@@ -126,16 +133,45 @@ export default function Register(){
                 textError: 'Por favor Digite una contraseña con mas de 8 digitos.',
                 value: e.target.value
             });
+            setButton(true);
         }
     };
+
+    //metodo para validar si se puede usar el btton de registrar o no
+    const enabledButton = () =>{
+        if(inputName.value.length !== 0 && inputUserName.value.length !== 0 && inputAge.value.length !== 0 && inputMail.value.length !== 0 && inputPassword.value.length !== 0){
+            setButton(false);
+        }else{
+            return setButton(true);
+        }
+    };
+
+    //metodo para limpiar los inputs
+    const cleanInputs = () =>{
+        setName({text: 'outlined-basic', label : 'Name', value: '', error : false, textError :''});
+        setUserName({text: 'outlined-basic', label : 'user Name', value: '', error : false, textError :''});
+        setAge({text: 'outlined-basic', label : 'Age', value: '', error : false, textError :''});
+        setMail({text: 'outlined-basic', label : 'E-Mail', value: '', error : false, textError :''});
+        setPassword({text: 'outlined-basic', label : 'password',  value: '', error : false, textError :''});
+        setButton(true);
+    };
+
     return (
         <Formik
-            initialValues={{name: '', last_name: '',  age: '', email: '', password: '' }}
+            initialValues={{name: '', user_name: '',  age: '', email: '', password: '' }}
             onSubmit={() => {
-                console.log('estamos contoodooo');
+                addUser({
+                    name: inputName.value,
+                    userName: inputUserName.value,
+                    type: "client",
+                    age: inputAge.value,
+                    email: inputMail.value,
+                    password: inputPassword.value
+                });
+                cleanInputs();
             }}
         >
-        {({handleSubmit, isSubmitting}) => (
+        {({handleSubmit}) => (
         <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -156,7 +192,7 @@ export default function Register(){
                     spacing={4}
                 >
                     <TextField type="text"  name="name" onChange={ changeName } value={inputName.value} error={inputName.error} id={inputName.text} label={inputName.label} variant="outlined" helperText={inputName.textError}/>
-                    <TextField type="text"  name="last_name" onChange={ changeLName } value={inputLName.value} error={inputLName.error} id={inputLName.text} label={inputLName.label} variant="outlined" helperText={inputLName.textError}/>
+                    <TextField type="text"  name="user_name" onChange={ changeUserName } value={inputUserName.value} error={inputUserName.error} id={inputUserName.text} label={inputUserName.label} variant="outlined" helperText={inputUserName.textError}/>
                     <TextField type="number" name="age" onChange={ changeAge } value={inputAge.value} error={inputAge.error} id={inputAge.text} label={inputAge.label} variant="outlined" helperText={inputAge.textError}/>
                     <TextField type="email" name="email" onChange={ changeMail } value={inputMail.value} error={inputMail.error} id={inputMail.text} label={inputMail.label} variant="outlined" helperText={inputMail.textError}/>
                     <TextField type="password"  name="password" onChange={ changePassword } value={inputPassword.value} error={inputPassword.error} id={inputPassword.text} label={inputPassword.label} variant="outlined" helperText={inputPassword.textError}/>
@@ -173,7 +209,7 @@ export default function Register(){
                             cancel
                         </Button>
                     </Link>
-                    <Button type="submit" disabled={isSubmitting} color="primary" variant="contained" endIcon={<DriveFileRenameOutlineIcon />}>
+                    <Button type="submit" disabled={dissabledButton} color="primary" variant="contained" endIcon={<DriveFileRenameOutlineIcon />}>
                         Create Account
                     </Button>
                 </Stack>
