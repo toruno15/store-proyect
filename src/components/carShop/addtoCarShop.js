@@ -46,7 +46,7 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: '',
         value: e.target.value
       });
-      cambio(5);
+      //cambio(5);
       setButton(false);
     }else{
       setInputCant({
@@ -56,7 +56,7 @@ export default function AddProductToCar({open, handleClose, product}) {
         textError: 'ERROR!. Digite un número mayor a cero.',
         value: e.target.value
       });
-      cambio(6);
+      //cambio(6);
       setButton(true);
     }
   }
