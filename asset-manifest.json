@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/github.io/store-practice/static/css/main.6b5898e5.chunk.css",
-    "main.js": "/github.io/store-practice/static/js/main.011d0a6c.chunk.js",
-    "main.js.map": "/github.io/store-practice/static/js/main.011d0a6c.chunk.js.map",
-    "runtime-main.js": "/github.io/store-practice/static/js/runtime-main.ef6190b2.js",
-    "runtime-main.js.map": "/github.io/store-practice/static/js/runtime-main.ef6190b2.js.map",
-    "static/js/2.df8b61be.chunk.js": "/github.io/store-practice/static/js/2.df8b61be.chunk.js",
-    "static/js/2.df8b61be.chunk.js.map": "/github.io/store-practice/static/js/2.df8b61be.chunk.js.map",
-    "static/js/3.bdd46825.chunk.js": "/github.io/store-practice/static/js/3.bdd46825.chunk.js",
-    "static/js/3.bdd46825.chunk.js.map": "/github.io/store-practice/static/js/3.bdd46825.chunk.js.map",
-    "index.html": "/github.io/store-practice/index.html",
-    "static/css/main.6b5898e5.chunk.css.map": "/github.io/store-practice/static/css/main.6b5898e5.chunk.css.map",
-    "static/js/2.df8b61be.chunk.js.LICENSE.txt": "/github.io/store-practice/static/js/2.df8b61be.chunk.js.LICENSE.txt"
+    "main.css": "/store-practice/static/css/main.6b5898e5.chunk.css",
+    "main.js": "/store-practice/static/js/main.011d0a6c.chunk.js",
+    "main.js.map": "/store-practice/static/js/main.011d0a6c.chunk.js.map",
+    "runtime-main.js": "/store-practice/static/js/runtime-main.77b99892.js",
+    "runtime-main.js.map": "/store-practice/static/js/runtime-main.77b99892.js.map",
+    "static/js/2.df8b61be.chunk.js": "/store-practice/static/js/2.df8b61be.chunk.js",
+    "static/js/2.df8b61be.chunk.js.map": "/store-practice/static/js/2.df8b61be.chunk.js.map",
+    "static/js/3.bdd46825.chunk.js": "/store-practice/static/js/3.bdd46825.chunk.js",
+    "static/js/3.bdd46825.chunk.js.map": "/store-practice/static/js/3.bdd46825.chunk.js.map",
+    "index.html": "/store-practice/index.html",
+    "static/css/main.6b5898e5.chunk.css.map": "/store-practice/static/css/main.6b5898e5.chunk.css.map",
+    "static/js/2.df8b61be.chunk.js.LICENSE.txt": "/store-practice/static/js/2.df8b61be.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ef6190b2.js",
+    "static/js/runtime-main.77b99892.js",
     "static/js/2.df8b61be.chunk.js",
     "static/css/main.6b5898e5.chunk.css",
     "static/js/main.011d0a6c.chunk.js"
